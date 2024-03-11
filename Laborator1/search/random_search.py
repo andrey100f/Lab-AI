@@ -8,6 +8,7 @@ class RandomSearch:
         self.__number_of_objects = 0
         self.__best_quality = 0
         self.__solutions = []
+        self.__number_of_iterations = 10
 
         self.__config_from_file(filename)
 
@@ -54,11 +55,5 @@ class RandomSearch:
                 self.__best_quality = solution_quality
 
         self.__solutions.append(self.__best_quality)
-        self.__write_file()
 
         return self.__best_quality
-
-    def __write_file(self):
-        with open("results/results_random/result_3.txt", 'a') as file:
-            file.write(str(self.__solutions))
-            file.write("\n")

@@ -7,9 +7,9 @@
 2. Să se implementeze Next Ascent Hill-Climbing pentru problema rucsacului.
 
 ## <span style="color: #4285F4"> Algoritm 1 - Random Search
-1. Generarea unei soluţii aleatoare.
+1. Generarea unei soluţii aleatoare - Această funcție primește o listă de obiecte și construiește o soluție asociată acestora. Pentru fiecare obiect din lista de obiecte, funcția alege aleatoriu între două valori posibile (0 sau 1) și atribuie această alegere soluției. Astfel, soluția generată este o listă de valori binare care indică o alegere arbitrară pentru fiecare obiect din lista dată. Soluția generată este apoi returnată.
 ```python
-    def __generate_solution(self):
+    def __generate_solution():
         solution = []
         for _ in range(len(self.__objects)):
             choice = random.choice([0, 1])
@@ -17,9 +17,9 @@
         return solution
 ```
 
-2. Verificare soluție validă.
+2. Verificare soluție validă - Această funcție primește o soluție și evaluează dacă aceasta respectă restricțiile impuse de greutatea maximă. Parcurge fiecare obiect din soluție și calculează greutatea și valoarea totală a obiectelor incluse. Dacă greutatea totală este mai mică sau egală cu greutatea maximă permisă, funcția returnează valoarea totală a obiectelor incluse în soluție, altfel returnează 0.
 ```python
-    def __evaluate_solution(self, solution):
+    def __evaluate_solution(solution):
         total_weight = 0
         total_value = 0
         for i in range(0, len(solution)):
@@ -32,7 +32,7 @@
         return 0
 ```
 
-3. Alegere cea mai bună soluție
+3. Alegere cea mai bună soluție - Această funcție execută un algoritm de căutare pentru a găsi o soluție optimă pentru o problemă dată. Prin generarea repetată de soluții aleatoare și evaluarea calității acestora, funcția actualizează și menține cea mai bună soluție găsită până în acel moment. La finalul numărului specificat de iterații, funcția returnează calitatea celei mai bune soluții găsite.
 ```python
     def execute_search(self, iterations):
         for i in range(iterations):
@@ -61,6 +61,8 @@ c).
 3.  Dacă nici un vecin x al punctului c nu duce la o evaluare mai bună, se salvează c și se continuă 
 procesul de la pasul 1.
 4. După un număr maxim de evaluări, se returnează cel mai bun c (hilltop).
+<br>
+ - Această funcție  primește o soluție dată sub formă de listă de valori binare și returnează o listă de soluții vecine. O soluție vecină este obținută prin invertirea valorii unei singure componente din soluția dată.
 ```python
     @staticmethod
     def __generate_neighbours(solution):
@@ -72,6 +74,11 @@ procesul de la pasul 1.
         return neighbours
 ```
 
+<br>
+<br>
+<br>
+
+- Verificare soluție validă
 ```python
     def __evaluate_solution(self, solution):
         total_weight = 0
@@ -86,6 +93,7 @@ procesul de la pasul 1.
         return 0
 ```
 
+- Această funcție este utilizată pentru a executa un algoritm de căutare locală, care explorează vecinătatea unei soluții pentru a găsi o îmbunătățire locală a acesteia. Se parcurge un număr specific de iterații și pentru fiecare iterație, se explorează vecinătatea soluției curente pentru a găsi o îmbunătățire locală. Dacă o îmbunătățire este găsită, soluția curentă este actualizată. În caz contrar, dacă nu s-a găsit nicio îmbunătățire după un anumit număr de vecini explorați, se generează o nouă soluție aleatoare pentru a evita blocarea într-un minim local. La final, calitatea celei mai bune soluții găsite este returnată
 ```python
  def execute_search(self, iterations):
         solution = self.__generate_solution()
@@ -156,11 +164,6 @@ procesul de la pasul 1.
 |                    | 800  |    | 3884        | 4365                  |              | 1.3823083878             |
 |                    | 900  |    | 3897.5      | 4215                  |              | 1.5341095924             |
 
-<br>
-<br>
-<br>
-<br>
-
 ## <span style="color: #4285F4"> Observații
 ### Tabele de date - Căutare locală
 1. #### Instanța problemei Inst 1:
@@ -173,6 +176,9 @@ procesul de la pasul 1.
 3. #### Instanța problemei Inst 3:
    - Valorile medii și cele mai bune pentru Inst 3 sunt mai mici decât cele pentru Inst 1 și Inst 2.
    - Timpul de execuție este mai mic pentru Inst 3 comparativ cu celelalte instanțe, dar este în continuare influențat de K.
+
+<br>
+<br>
 
 ### Tabele de date - Next Ascent Hill-Climbing
 1. #### Instanța problemei Inst 1:

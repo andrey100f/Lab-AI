@@ -64,7 +64,6 @@ class NAHC:
                 if neighbour_quality > solution_quality:
                     solution = neighbour
                     solution_quality = neighbour_quality
-                    found = True
                     break
 
                 if number_of_neighbours % max_iterations == 0 and found is False:
@@ -74,7 +73,6 @@ class NAHC:
         self.__best_quality = solution_quality
 
         self.__solutions.append(self.__best_quality)
-        self.__write_file()
 
         return self.__best_quality
 
@@ -86,8 +84,3 @@ class NAHC:
             solution_copy[i] = 1 - solution_copy[i]
             neighbours.append(solution_copy)
         return neighbours
-
-    def __write_file(self):
-        with open("results/results_nahc/result_2.txt", 'a') as file:
-            file.write(str(self.__solutions))
-            file.write("\n")

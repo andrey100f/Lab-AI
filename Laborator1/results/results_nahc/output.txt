@@ -1,0 +1,20 @@
+Algoritm folosit: NAHC
+Fisier de intrare: config/data2.txt
+K = 50
+P = 5
+Numar rulari: 10. Rezultatele obtinute sunt:
+
+94126          0.3428635597229004
+94678          0.38359999656677246
+96119          0.35512709617614746
+94771          0.3844144344329834
+92429          0.381011962890625
+96131          0.3660409450531006
+96009          0.4245736598968506
+96093          0.3403041362762451
+96109          0.35391807556152344
+96648          0.45085930824279785
+
+Valoare medie obtinuta: 95311.3
+Valoare maxima obtinuta: 96648
+Timp de executie mediu: 0.3782713174819946

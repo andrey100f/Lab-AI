@@ -2,13 +2,23 @@ import time
 
 from search.nahc import NAHC
 from search.random_search import RandomSearch
+from ui.file_writer.nahc_file_writer import NAHCFileWriter
+from ui.file_writer.random_file_writer import RandomFileWriter
 
 
 class UI:
     def __init__(self, filename):
+        self.__k = 50
+        self.__p = 5
+
+        self.__filename = filename
         self.__random_search = RandomSearch(filename)
         self.__nahc = NAHC(filename)
         self.__execution_times = []
+        self.__solutions = []
+
+        self.__random_file_writer = RandomFileWriter(filename, self.__k)
+        self.__nahc_file_writer = NAHCFileWriter(filename, self.__k, self.__p)
 
     def show_menu(self):
         while True:
@@ -19,38 +29,49 @@ class UI:
             user_choice = input("Dati optiunea: ")
 
             if user_choice == "1":
-                iterations = int(input("Dati numarul de iteratii: "))
+                self.__solutions = []
+                self.__execution_times = []
 
-                start_time = time.time()
-                solution = self.__random_search.execute_search(iterations)
-                end_time = time.time()
-                execution_time = end_time - start_time
+                self.__random_file_writer.initial_write_file()
 
-                self.__execution_times.append(execution_time)
+                for i in range(10):
+                    start_time = time.time()
+                    solution = self.__random_search.execute_search(self.__k)
+                    end_time = time.time()
+                    execution_time = end_time - start_time
 
-                print(f"Solutia este: {solution}")
-                print(f"Timp de executie: {execution_time}")
+                    self.__solutions.append(solution)
+                    self.__execution_times.append(execution_time)
+                    self.__random_file_writer.write_file(solution, execution_time)
+
+                self.__random_file_writer.set_solutions(self.__solutions)
+                self.__random_file_writer.set_execution_times(self.__execution_times)
+                self.__random_file_writer.final_write_file()
+
+                print("Datele au fost scrise in fisier...")
             elif user_choice == "2":
-                iterations = int(input("Dati numarul de iteratii: "))
-                max_iterations = int(input("Dati numarul maxim de iteratii: "))
+                self.__solutions = []
+                self.__execution_times = []
 
-                start_time = time.time()
-                solution = self.__nahc.execute_search(iterations, max_iterations)
-                end_time = time.time()
-                execution_time = end_time - start_time
+                self.__nahc_file_writer.initial_write_file()
 
-                self.__execution_times.append(execution_time)
+                for i in range(10):
+                    start_time = time.time()
+                    solution = self.__nahc.execute_search(self.__k, self.__p)
+                    end_time = time.time()
+                    execution_time = end_time - start_time
 
-                print(f"Solutia este: {solution}")
-                print(f"Timp de executie: {execution_time}")
+                    self.__solutions.append(solution)
+                    self.__execution_times.append(execution_time)
+                    self.__nahc_file_writer.write_file(solution, execution_time)
 
+                self.__nahc_file_writer.set_solutions(self.__solutions)
+                self.__nahc_file_writer.set_execution_times(self.__execution_times)
+                self.__nahc_file_writer.final_write_file()
+
+                print("Datele au fost scrise in fisier...")
             elif user_choice == "x":
-                self.__write_to_file()
                 break
             else:
                 print("Optiune gresita... Reincercati")
 
-    def __write_to_file(self):
-        with open("results/results_random/result_3.txt", 'a') as file:
-            file.write(str(self.__execution_times))
-            file.write("\n")

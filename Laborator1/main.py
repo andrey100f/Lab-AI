@@ -2,7 +2,7 @@ from ui.ui import UI
 
 
 def main():
-    ui = UI("config/data3.txt")
+    ui = UI("config/data2.txt")
     ui.show_menu()
 
 
