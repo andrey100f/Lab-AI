@@ -1,0 +1,39 @@
+Algoritm folosit: random search
+Fisier de intrare: config/rucsac/data1.txt
+Numar iteratii = 100
+Iteratii tabu: 2
+Numar rulari: 10. Rezultatele obtinute sunt:
+
+602          0.011597871780395508
+678          0.009251832962036133
+659          0.00976872444152832
+589          0.009610414505004883
+605          0.009618997573852539
+606          0.00972127914428711
+625          0.00935053825378418
+592          0.009688377380371094
+364          0.01066899299621582
+620          0.00966191291809082
+
+Valoare medie obtinuta: 594.0
+Valoare maxima obtinuta: 678
+Timp de executie mediu: 0.00989389419555664Algoritm folosit: tabu search
+Fisier de intrare: config/rucsac/data1.txt
+Numar iteratii = 100
+Iteratii tabu: 2
+Numar rulari: 10. Rezultatele obtinute sunt:
+
+576          0.012003183364868164
+656          0.010999917984008789
+575          0.011216878890991211
+641          0.010998964309692383
+645          0.011050701141357422
+0          0.010695219039916992
+670          0.010000228881835938
+613          0.011238813400268555
+699          0.010995864868164062
+0          0.0110015869140625
+
+Valoare medie obtinuta: 507.5
+Valoare maxima obtinuta: 699
+Timp de executie mediu: 0.011020135879516602
