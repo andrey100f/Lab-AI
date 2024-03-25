@@ -7,18 +7,16 @@ from ui.file_writer import OutputFileWriter
 
 class UI:
     def __init__(self):
-        self.__iterations = 100
-        self.__tabu_iterations = 2
+        self.__iterations = 0
+        self.__tabu_iterations = 0
 
-        self.__rucsac = Rucsac("config/rucsac/data1.txt",
-                               self.__iterations, self.__tabu_iterations)
-        self.__tsp = TSP("config/tsp/data.tsp", self.__iterations,
-                         self.__tabu_iterations)
+        self.__rucsac = None
+        self.__tsp = None
 
         self.__execution_times = []
         self.__solutions = []
 
-        self.__rucsac_file_writer = OutputFileWriter("config/rucsac/data1.txt",
+        self.__rucsac_file_writer = OutputFileWriter("config/rucsac/data3.txt",
                                                      "results/rucsac.txt", self.__iterations,
                                                      self.__tabu_iterations)
         self.__tsp_file_writer = OutputFileWriter("config/tsp/data.tsp", "results/tsp.txt",
@@ -33,6 +31,12 @@ class UI:
             user_choice = input("Dati optiunea: ")
 
             if user_choice == "1":
+                self.__iterations = int(input("Dati numarul de iteratii: "))
+                self.__tabu_iterations = int(input("Dati numerul de iteratii tabu: "))
+
+                self.__rucsac = Rucsac("config/rucsac/data3.txt",
+                                       self.__iterations, self.__tabu_iterations)
+
                 self.__solutions = []
                 self.__execution_times = []
 
@@ -54,6 +58,12 @@ class UI:
 
                 print("Datele au fost scrise in fisier...")
             elif user_choice == "2":
+                self.__iterations = int(input("Dati numarul de iteratii: "))
+                self.__tabu_iterations = int(input("Dati numerul de iteratii tabu: "))
+
+                self.__tsp = TSP("config/tsp/data.tsp", self.__iterations,
+                                 self.__tabu_iterations)
+
                 self.__solutions = []
                 self.__execution_times = []
 

@@ -36,3 +36,4 @@ class OutputFileWriter:
             file.write(f"Valoare medie obtinuta: {median_solution}\n")
             file.write(f"Valoare maxima obtinuta: {max_solution}\n")
             file.write(f"Timp de executie mediu: {median_execution_time}\n")
+            file.write("\n")

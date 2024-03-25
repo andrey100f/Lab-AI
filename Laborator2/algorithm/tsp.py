@@ -1,4 +1,3 @@
-import copy
 import math
 import random
 
@@ -44,9 +43,8 @@ class TSP:
         cost_current_route = self.__get_cost(current_route)
 
         for _ in range(self.__iterations):
-            neighbour = copy.deepcopy(current_route)
+            neighbour = self.generate_neighbours(current_route)
             city_1, city_2 = random.sample(range(self.__number_of_cities), 2)
-            neighbour[city_1], neighbour[city_2] = neighbour[city_2], neighbour[city_1]
             cost_neighbour = self.__get_cost(neighbour)
 
             is_tabu = memory[city_1][city_2] > 0
@@ -68,4 +66,9 @@ class TSP:
         x1, y1 = self.__cities[city1]["city_x"], self.__cities[city1]["city_y"]
         x2, y2 = self.__cities[city2]["city_x"], self.__cities[city2]["city_y"]
 
-        return math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+        return math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1))
+
+    @staticmethod
+    def generate_neighbours(solution):
+        a, b = sorted(random.sample(range(len(solution)), 2))
+        return solution[:a] + solution[a:b + 1][::-1] + solution[b + 1:]
