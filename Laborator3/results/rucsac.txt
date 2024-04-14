@@ -1,0 +1,110 @@
+=Algoritm folosit: algoritm evolutiv
+Fisier de intrare: config/rucsac/data1.txt
+Dimensiune populatie = 100
+Numar generatii = 500
+Probabilitate de mutatie: 0.8
+Numar rulari: 10. Rezultatele obtinute sunt:
+
+599          1.0034830570220947
+646          0.9940037727355957
+611          1.0047736167907715
+633          1.0029208660125732
+600          1.0320525169372559
+658          0.9912521839141846
+689          0.9991247653961182
+587          0.9919121265411377
+659          0.9854133129119873
+582          0.9939565658569336
+
+Valoare medie obtinuta: 626.4
+Valoare maxima obtinuta: 689
+Timp de executie mediu: 0.9998892784118653
+
+Algoritm folosit: algoritm evolutiv
+Fisier de intrare: config/rucsac/data1.txt
+Dimensiune populatie = 150
+Numar generatii = 600
+Probabilitate de mutatie: 0.9
+Numar rulari: 10. Rezultatele obtinute sunt:
+
+631          2.139044761657715
+624          2.122554063796997
+618          2.108004093170166
+625          2.1071579456329346
+621          2.1168129444122314
+642          2.1113791465759277
+641          2.123065948486328
+636          2.13079833984375
+589          2.126185417175293
+674          2.1364855766296387
+
+Valoare medie obtinuta: 630.1
+Valoare maxima obtinuta: 674
+Timp de executie mediu: 2.1221488237380983
+
+Algoritm folosit: algoritm evolutiv
+Fisier de intrare: config/rucsac/data1.txt
+Dimensiune populatie = 80
+Numar generatii = 400
+Probabilitate de mutatie: 0.7
+Numar rulari: 10. Rezultatele obtinute sunt:
+
+649          0.6118056774139404
+616          0.590174674987793
+657          0.5940492153167725
+584          0.5918381214141846
+682          0.5955612659454346
+686          0.5935587882995605
+650          0.5888044834136963
+565          0.5953388214111328
+598          0.5882775783538818
+630          0.5917978286743164
+
+Valoare medie obtinuta: 631.7
+Valoare maxima obtinuta: 686
+Timp de executie mediu: 0.5941206455230713
+
+Algoritm folosit: algoritm evolutiv
+Fisier de intrare: config/rucsac/data1.txt
+Dimensiune populatie = 120
+Numar generatii = 550
+Probabilitate de mutatie: 0.85
+Numar rulari: 10. Rezultatele obtinute sunt:
+
+664          1.4452803134918213
+642          1.4134087562561035
+652          1.4041452407836914
+645          1.405646562576294
+669          1.4048714637756348
+639          1.4088726043701172
+640          1.4342589378356934
+633          1.41790771484375
+592          1.4122707843780518
+628          1.4165360927581787
+
+Valoare medie obtinuta: 640.4
+Valoare maxima obtinuta: 669
+Timp de executie mediu: 1.4163198471069336
+
+Algoritm folosit: algoritm evolutiv
+Fisier de intrare: config/rucsac/data1.txt
+Dimensiune populatie = 200
+Numar generatii = 700
+Probabilitate de mutatie: 0.95
+Numar rulari: 10. Rezultatele obtinute sunt:
+
+592          3.7711634635925293
+683          3.778599500656128
+611          3.753607749938965
+636          3.72934889793396
+641          3.7713980674743652
+701          3.7485978603363037
+686          3.75091814994812
+618          3.8005220890045166
+635          3.7375054359436035
+674          3.774040699005127
+
+Valoare medie obtinuta: 647.7
+Valoare maxima obtinuta: 701
+Timp de executie mediu: 3.761570191383362
+
