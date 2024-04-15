@@ -61,18 +61,9 @@ class Rucsac:
 
             self.__max_weight = int(lines[-1])
 
-    def __selection(self, population):
-        max_value = sum(individual.get_fitness() for individual in population)
-        pick = random.uniform(0, max_value)
-        current = 0
-
-        for individual in population:
-            current += individual.get_fitness()
-            if current > pick:
-                return individual
-
     def __crossover(self, parent1, parent2):
-        child1, child2 = self.Individual(self.__objects, self.__max_weight), self.Individual(self.__objects, self.__max_weight)
+        child1, child2 = self.Individual(self.__objects, self.__max_weight), self.Individual(self.__objects,
+                                                                                             self.__max_weight)
 
         if random.random() < self.__crossover_probability:
             crossover_point = random.randint(1, len(parent1.get_genes()) - 1)
@@ -103,7 +94,19 @@ class Rucsac:
                 self.__mutation(child1)
                 self.__mutation(child2)
                 new_population.extend([child1, child2])
-            population = sorted(new_population, key=lambda individual: individual.get_fitness(), reverse=True)[:self.__population_size]
+            population = sorted(new_population, key=lambda individual: individual.get_fitness(),
+                                reverse=True)[:self.__population_size]
 
         best_individual = max(population, key=lambda individual: individual.get_fitness())
         return best_individual.get_fitness()
+
+    @staticmethod
+    def __selection(population):
+        max_value = sum(individual.get_fitness() for individual in population)
+        pick = random.uniform(0, max_value)
+        current = 0
+
+        for individual in population:
+            current += individual.get_fitness()
+            if current > pick:
+                return individual

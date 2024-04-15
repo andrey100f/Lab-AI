@@ -26,7 +26,13 @@ class UI:
             user_choice = input("Dati optiunea: ")
 
             if user_choice == "1":
-                self.__rucsac = Rucsac("config/rucsac/data1.txt", 200, 700, 0.95, 0.1)
+                population_size = int(input("Dati dimensiunea populatiei: "))
+                number_of_generations = int(input("Dati numarul de generatii: "))
+                crossover_probability = float(input("Dati probabilitatea de crossover: "))
+                mutation_probability = float(input("Dati probabilitatea de mutatie: "))
+
+                self.__rucsac = Rucsac("config/rucsac/data2.txt", population_size, number_of_generations,
+                                       crossover_probability, mutation_probability)
 
                 self.__solutions = []
                 self.__execution_times = []
@@ -50,7 +56,13 @@ class UI:
 
                 print("Datele au fost scrise in fisier...")
             elif user_choice == "2":
-                self.__tsp = TSP("config/tsp/data.tsp", 170, 850, 0.06, 15)
+                population_size = int(input("Dati dimensiunea populatiei: "))
+                number_of_generations = int(input("Dati numarul de generatii: "))
+                tournament_size = int(input("Dati dimensiunea turneului: "))
+                mutation_probability = float(input("Dati probabilitatea de mutatie: "))
+
+                self.__tsp = TSP("config/tsp/data.tsp", population_size, number_of_generations,
+                                 mutation_probability, tournament_size)
                 self.__solutions = []
                 self.__execution_times = []
 
