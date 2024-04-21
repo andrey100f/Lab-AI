@@ -1,4 +1,5 @@
 import time
+import matplotlib.pyplot as plt
 
 from algorithm.evo import Evo
 from algorithm.pso import PSO
@@ -30,17 +31,19 @@ class UI:
                 number_of_generations = int(input("Dati numarul de generatii: "))
                 mutation_probability = float(input("Dati probabilitatea de mutatie: "))
 
-                self.__evo = Evo(population_size, mutation_probability, number_of_generations, 10)
+                self.__evo = Evo(population_size, mutation_probability, number_of_generations, 2)
 
                 self.__solutions = []
                 self.__execution_times = []
 
-                self.__evo_file_writer.set_input(population_size, number_of_generations, mutation_probability, 10)
+                self.__evo_file_writer.set_input(population_size, number_of_generations, mutation_probability, 2)
                 self.__evo_file_writer.initial_write_file()
 
+                fitness_values = []
                 for i in range(10):
                     start_time = time.time()
                     solution = self.__evo.execute_search()
+                    fitness_values.append(self.__evo.get_fitness_values())
                     end_time = time.time()
                     execution_time = end_time - start_time
 
@@ -52,6 +55,7 @@ class UI:
                 self.__evo_file_writer.set_execution_times(self.__execution_times)
                 self.__evo_file_writer.final_write_file()
 
+                self.__plot_fitness_values(fitness_values)
                 print("Datele au fost scrise in fisier...")
             elif user_choice == "2":
                 particles = int(input("Dati numarul de particule: "))
@@ -85,3 +89,15 @@ class UI:
                 break
             else:
                 print("Optiune invalida. Reincercati...")
+
+    @staticmethod
+    def __plot_fitness_values(fitness_values):
+        plt.figure(figsize=(10, 5))
+        for i, value in enumerate(fitness_values):
+            plt.plot(value, label=f'Test {i + 1}')
+        plt.title("Fitness values")
+        plt.xlabel('Generation')
+        plt.ylabel('Best Fitness')
+        plt.legend()
+        plt.grid(True)
+        plt.show()

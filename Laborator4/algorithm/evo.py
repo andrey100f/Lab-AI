@@ -7,6 +7,7 @@ class Evo:
         self.__mutation_probability = mutation_probability
         self.__number_of_generations = number_of_generations
         self.__dimensions = dimensions
+        self.__fitness_values = []
 
     def __initialize_population(self):
         population = []
@@ -48,6 +49,7 @@ class Evo:
         return individual
 
     def execute_search(self):
+        self.__fitness_values = []
         population = self.__initialize_population()
 
         for generation in range(self.__number_of_generations):
@@ -67,6 +69,7 @@ class Evo:
 
             population = sorted(new_population, key=lambda individual: self.__evaluate_fitness(individual))
             population = population[:self.__population_size]
+            self.__fitness_values.append(self.__evaluate_fitness(population[0]))
 
         best_individual = min(population, key=lambda individual: self.__evaluate_fitness(individual))
         return self.__evaluate_fitness(best_individual)
@@ -100,3 +103,6 @@ class Evo:
             selected_individual = min(population, key=lambda individual: self.__evaluate_fitness(individual))
 
         return selected_individual
+
+    def get_fitness_values(self):
+        return self.__fitness_values
