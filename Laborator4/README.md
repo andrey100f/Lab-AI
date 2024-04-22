@@ -1,4 +1,4 @@
-<h1 align="center" style="color: #4285F4">Algoritmi evolutivi</h1>
+<h1 align="center" style="color: #4285F4">AEs, Swarm Intelligence</h1>
 
 ## <span style="color: #4285F4"> Cerința problemei
 
