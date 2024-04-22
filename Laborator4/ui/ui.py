@@ -31,12 +31,12 @@ class UI:
                 number_of_generations = int(input("Dati numarul de generatii: "))
                 mutation_probability = float(input("Dati probabilitatea de mutatie: "))
 
-                self.__evo = Evo(population_size, mutation_probability, number_of_generations, 2)
+                self.__evo = Evo(population_size, mutation_probability, number_of_generations, 10)
 
                 self.__solutions = []
                 self.__execution_times = []
 
-                self.__evo_file_writer.set_input(population_size, number_of_generations, mutation_probability, 2)
+                self.__evo_file_writer.set_input(population_size, number_of_generations, mutation_probability, 10)
                 self.__evo_file_writer.initial_write_file()
 
                 fitness_values = []
